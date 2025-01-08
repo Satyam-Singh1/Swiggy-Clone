@@ -6,16 +6,10 @@ export default function Category() {
   const [categories, setCategories] = useState([]);
 
   const fetchCategory = async () => {
-    try {
-      const response = await fetch("/category.json"); // Path relative to `public`
-      if (!response.ok) {
-        throw new Error("Failed to fetch category data");
-      }
+      const response = await fetch("/category.json");   
       const data = await response.json();
       setCategories(data);
-    } catch (error) {
-      console.error("Error fetching category data:", error);
-    }
+     
   };
 
   useEffect(() => {
@@ -54,7 +48,7 @@ export default function Category() {
                 style={{ transform: `translateX(-${slide * 100}%)` }}
               >
                 <img
-                  src={`/images/${category.image}`} // Path for images in `public/images`
+                  src={category.image} // Path for images in `public/images`
                   alt={category.path}
                   className="w-full h-auto"
                 />

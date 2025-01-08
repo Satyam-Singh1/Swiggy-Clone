@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import Card from "./Card";
 export default function TopRestaurant() {
   const [data, setData] = useState([]);
+  const fetchTopRestaurant = async ()=>{
+    const response = await fetch("/topRestaurant.json");
+    const Apidata = await response.json();
+    setData(Apidata);
+  }
+
+  useEffect(
+    ()=>{
+      fetchTopRestaurant();
+    },[]
+  )
+  
   return (
     <div className="max-w-[1200px] mx-auto border items-center">
       <div className="flex items-center justify-between">
@@ -19,6 +31,11 @@ export default function TopRestaurant() {
         </div>
       </div>
       <div className="flex gap-5 overflow-hidden">
+        {
+          data.map((index , data)=>{
+            return <Card {...data} key={index}/>
+          })
+        }
         <Card />
       </div>
     </div>
