@@ -58,8 +58,8 @@ export default function Header() {
             <img src={logo} alt="logo" className="w-full" />
           </div>
           <div>
-            <span className=" font-bold border-b border-black">Ramkola </span>{" "}
-            Kushinagar, Up
+            <span className=" font-bold border-b border-black">Greater Noida </span>{" "}
+            , UP
             <RxCaretDown
               onClick={showSideMenu}
               className="inline font-bold
